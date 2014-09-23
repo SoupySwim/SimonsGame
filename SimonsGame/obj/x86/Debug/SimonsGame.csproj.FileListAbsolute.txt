@@ -1,0 +1,9 @@
+E:\Capstone Project\SimonsGame\SimonsGame\obj\x86\Debug\SimonsGame.exe
+E:\Capstone Project\SimonsGame\SimonsGame\obj\x86\Debug\SimonsGame.pdb
+E:\Capstone Project\SimonsGame\SimonsGame\bin\WindowsGL\Debug\SimonsGame.exe
+E:\Capstone Project\SimonsGame\SimonsGame\bin\WindowsGL\Debug\SimonsGame.pdb
+E:\Capstone Project\SimonsGame\SimonsGame\bin\WindowsGL\Debug\Lidgren.Network.dll
+E:\Capstone Project\SimonsGame\SimonsGame\bin\WindowsGL\Debug\MonoGame.Framework.dll
+E:\Capstone Project\SimonsGame\SimonsGame\bin\WindowsGL\Debug\OpenTK.dll
+E:\Capstone Project\SimonsGame\SimonsGame\bin\WindowsGL\Debug\Tao.Sdl.dll
+E:\Capstone Project\SimonsGame\SimonsGame\obj\x86\Debug\SimonsGame.csprojResolveAssemblyReference.cache
