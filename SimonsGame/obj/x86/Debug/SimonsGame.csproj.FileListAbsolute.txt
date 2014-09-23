@@ -9,3 +9,10 @@ E:\Capstone Project\SimonsGame\SimonsGame\bin\WindowsGL\Debug\Tao.Sdl.dll
 E:\Capstone Project\SimonsGame\SimonsGame\obj\x86\Debug\SimonsGame.csprojResolveAssemblyReference.cache
 E:\Dropbox\SimonsGame\SimonsGame\obj\x86\Debug\SimonsGame.exe
 E:\Dropbox\SimonsGame\SimonsGame\obj\x86\Debug\SimonsGame.pdb
+E:\Dropbox\SimonsGame\SimonsGame\bin\WindowsGL\Debug\SimonsGame.exe
+E:\Dropbox\SimonsGame\SimonsGame\bin\WindowsGL\Debug\SimonsGame.pdb
+E:\Dropbox\SimonsGame\SimonsGame\bin\WindowsGL\Debug\Lidgren.Network.dll
+E:\Dropbox\SimonsGame\SimonsGame\bin\WindowsGL\Debug\MonoGame.Framework.dll
+E:\Dropbox\SimonsGame\SimonsGame\bin\WindowsGL\Debug\OpenTK.dll
+E:\Dropbox\SimonsGame\SimonsGame\bin\WindowsGL\Debug\Tao.Sdl.dll
+E:\Dropbox\SimonsGame\SimonsGame\obj\x86\Debug\SimonsGame.csprojResolveAssemblyReference.cache

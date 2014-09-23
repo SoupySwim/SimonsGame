@@ -102,12 +102,12 @@ namespace SimonsGame.GuiObjects
 
 		public void Update(GameTime gameTime)
 		{
-
 			PreUpdate(gameTime);
 
 
 			PostUpdate(gameTime);
 		}
+
 		public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
 		{
 			PreDraw(gameTime, spriteBatch);
@@ -117,12 +117,7 @@ namespace SimonsGame.GuiObjects
 			
 			PostDraw(gameTime, spriteBatch);
 		}
-		public Vector2 GetIntersectionDepth(MainGuiObject obj)
-		{
-			Vector4 thisBounds = this.Bounds;
-			Vector4 thatBounds = obj.Bounds;
-			return GetIntersectionDepth(thisBounds, thatBounds);
-		}
+
 		public static Vector2 GetIntersectionDepth(Vector4 rectA, Vector4 rectB)
 		{
 			// Calculate half sizes.
