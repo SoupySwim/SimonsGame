@@ -41,6 +41,7 @@
     <Compile Include="GuiObjects\BaseClasses\PhysicsObject.cs" />
     <Compile Include="GuiObjects\Level.cs" />
     <Compile Include="GuiObjects\Utility\Animator.cs" />
+    <Compile Include="Modifiers\Abilities\AbilityManager.cs" />
     <Compile Include="Modifiers\ModifierBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
