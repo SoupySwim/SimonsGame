@@ -7,15 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 using SimonsGame.Modifiers;
 using Microsoft.Xna.Framework.Content;
 using SimonsGame.GuiObjects.Utility;
+using SimonsGame.Utility;
 
 namespace SimonsGame.GuiObjects
 {
-	public enum Group
-	{
-		Ignore,
-		HoldUp,
-		PushDown
-	}
 
 	public abstract class MainGuiObject : GuiVariables
 	{
