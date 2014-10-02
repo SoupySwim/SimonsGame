@@ -7,7 +7,7 @@ namespace SimonsGame.Modifiers
 {
 	// To be implemented later.
 
-	class AbilityManager
+	public class AbilityManager
 	{
 	}
 }

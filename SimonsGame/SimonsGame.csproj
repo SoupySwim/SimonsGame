@@ -35,6 +35,9 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GuiObjects\Player\Player.cs" />
+    <Compile Include="GuiObjects\Terrain\MovingPlatform.cs" />
+    <Compile Include="GuiObjects\Terrain\Platform.cs" />
     <Compile Include="MainGame.cs" />
     <Compile Include="GuiObjects\BaseClasses\GuiVariables.cs" />
     <Compile Include="GuiObjects\BaseClasses\MainGuiObject.cs" />
@@ -45,6 +48,7 @@
     <Compile Include="Modifiers\ModifierBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\LevelBuilder.cs" />
     <Compile Include="Utility\AnimationUtility.cs" />
     <Compile Include="Utility\Elements.cs" />
     <Compile Include="Utility\GroupHandler.cs" />
@@ -68,7 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
-    <Folder Include="Test\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

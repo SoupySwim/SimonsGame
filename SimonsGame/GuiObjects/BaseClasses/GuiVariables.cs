@@ -6,8 +6,10 @@ using Microsoft.Xna.Framework;
 
 namespace SimonsGame.GuiObjects
 {
-	// This class is a container for all GUI objects.
-	// Also used to manipulate GUI Objects with Modifiers.
+	/// <summary>
+	/// This class is a container for all GUI objects.
+	/// Also used to manipulate GUI Objects with Modifiers.
+	/// </summary>
 	public abstract class GuiVariables
 	{
 

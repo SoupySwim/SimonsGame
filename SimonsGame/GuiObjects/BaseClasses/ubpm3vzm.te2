@@ -42,23 +42,18 @@ namespace SimonsGame.GuiObjects
 
 
 			// Vertical.
-			IEnumerable<Tuple<Vector2, MainGuiObject>> verticallyHitPlatforms = guiObjects.SelectMany(kv => kv.Value).Select(p =>
+			IEnumerable<MainGuiObject> verticallyHitPlatforms = guiObjects.SelectMany(kv => kv.Value).Where(p =>
 			{
 				if (VerticalPass && p.Group == Group.VerticalPassable)
-					return new { bounds = Vector2.Zero, select = false, obj = MainGuiObject.EmptyVessel };
+					return false;
 				var bounds = MainGuiObject.GetIntersectionDepth(nextBounds, p.Bounds);
 				float platHeight = p.Size.Y;
-				//return bounds != Vector2.Zero && bounds.Y <= 0 && bounds.Y >= -platHeight;
-
-				return new { bounds = bounds, select = bounds != Vector2.Zero && bounds.Y <= 0 && bounds.Y >= -platHeight, obj = p };
-			}).Where(o => o.select).Select(o => new Tuple<Vector2, MainGuiObject>(o.bounds, o.obj)); ;
-
-			//Pick shortest depth as that's the one we care about presumably.
-			Tuple<Vector2, MainGuiObject> verticallyHitPlatformTuple = verticallyHitPlatforms.OrderBy(p => Math.Abs(p.Item1.Y)).FirstOrDefault(); // Will unfortunately have to do some better logic later.
-
-			if (verticallyHitPlatformTuple != null)
+				return bounds != Vector2.Zero && bounds.Y <= 0 && bounds.Y >= -platHeight;
+			});
+			//ASSUME ONLY ONE FOR NOW...
+			MainGuiObject verticallyHitPlatform = verticallyHitPlatforms.FirstOrDefault();
+			if (verticallyHitPlatform != null)
 			{
-				MainGuiObject verticallyHitPlatform = verticallyHitPlatformTuple.Item2;
 				float platHeight = verticallyHitPlatform.Size.Y;
 				float bumpLeeway = Position.Y + Size.Y - platHeight;
 				Vector2 bounds = GetIntersectionDepth(verticallyHitPlatform);
@@ -76,26 +71,26 @@ namespace SimonsGame.GuiObjects
 			// Horizontal
 
 			// Make this check more groups... in an elegant way.
-			IEnumerable<Tuple<Vector2, MainGuiObject>> horizontallyHitPlatforms = guiObjects.Where(g => g.Key == Group.ImpassableIncludingMagic).SelectMany(kv => kv.Value).Select(p =>
+			IEnumerable<MainGuiObject> horizontallyHitPlatforms = guiObjects.Where(g => g.Key == Group.ImpassableIncludingMagic).SelectMany(kv => kv.Value).Where(p =>
 			{
 				var bounds = MainGuiObject.GetIntersectionDepth(nextBounds, p.Bounds);
 				float platWidth = p.Size.X;
-				return new { bounds = bounds, select = bounds != Vector2.Zero && Math.Abs(bounds.X) > 0 && Math.Abs(bounds.X) <= platWidth, obj = p };
-			}).Where(o => o.select).Select(o => new Tuple<Vector2, MainGuiObject>(o.bounds, o.obj));
-			//Pick shortest depth as that's the one we care about presumably.
-			Tuple<Vector2, MainGuiObject> horizontallyHitPlatformTuple = horizontallyHitPlatforms.OrderBy(p => Math.Abs(p.Item1.X)).FirstOrDefault(); // Will unfortunately have to do some better logic later.
-			if (horizontallyHitPlatformTuple != null)
+				return bounds != Vector2.Zero && bounds.X <= 0 && bounds.X >= -platWidth;
+			});
+			//ASSUME ONLY ONE FOR NOW...
+			MainGuiObject horizontallyHitPlatform = horizontallyHitPlatforms.FirstOrDefault();
+			if (horizontallyHitPlatform != null)
 			{
-				MainGuiObject horizontallyHitPlatform = horizontallyHitPlatformTuple.Item2;
 				float platWidth = horizontallyHitPlatform.Size.X;
 				float bumpLeeway = Position.X + Size.X - platWidth;
 				Vector2 bounds = GetIntersectionDepth(horizontallyHitPlatform);
 				// If the object is moving downwards, and is below the top of the platform, push it back up.
-				if (Math.Abs(bounds.X) > 0 && Math.Abs(bounds.X) <= AverageSpeed.X)
+				if (bounds.X <= 0 && bounds.X >= -AverageSpeed.X * 2)
 				{
 					// fix offset
-					Position = new Vector2(Position.X + bounds.X, Position.Y);
+					Position = new Vector2(Position.X + bounds.X + 1, Position.Y);
 					projectedHorizontalSpeed = 0;
+					IsLanded = true;
 				}
 			}
 

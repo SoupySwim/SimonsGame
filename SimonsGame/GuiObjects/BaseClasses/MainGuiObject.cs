@@ -17,6 +17,8 @@ namespace SimonsGame.GuiObjects
 		protected Guid _guid;
 		public Guid Id { get { return _guid; } }
 
+		public static MainGuiObject EmptyVessel { get { return null; } }
+
 
 		protected Animator _animator;
 
@@ -99,6 +101,10 @@ namespace SimonsGame.GuiObjects
 		{
 			PreUpdate(gameTime);
 
+			float xCurMove = GetXMovement();
+			float yCurMove = GetYMovement();
+			CurrentMovement = new Vector2(xCurMove, yCurMove);
+			Position = new Vector2(Position.X + CurrentMovement.X, Position.Y + CurrentMovement.Y);
 
 			PostUpdate(gameTime);
 		}
@@ -106,13 +112,21 @@ namespace SimonsGame.GuiObjects
 		public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
 		{
 			PreDraw(gameTime, spriteBatch);
+			spriteBatch.Begin();
 
-			//Rectangle destinationRect = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
-			//spriteBatch.Draw(HitboxImage, destinationRect, _hitBoxColor);
-			
+			Rectangle destinationRect = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
+			spriteBatch.Draw(HitboxImage, destinationRect, _hitBoxColor);
+			spriteBatch.End();
+
 			PostDraw(gameTime, spriteBatch);
 		}
 
+		public Vector2 GetIntersectionDepth(MainGuiObject obj)
+		{
+			Vector4 thisBounds = this.Bounds;
+			Vector4 thatBounds = obj.Bounds;
+			return GetIntersectionDepth(thisBounds, thatBounds);
+		}
 		public static Vector2 GetIntersectionDepth(Vector4 rectA, Vector4 rectB)
 		{
 			// Calculate half sizes.

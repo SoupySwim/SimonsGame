@@ -45,7 +45,7 @@ namespace SimonsGame.GuiObjects
 			IEnumerable<Tuple<Vector2, MainGuiObject>> verticallyHitPlatforms = guiObjects.SelectMany(kv => kv.Value).Select(p =>
 			{
 				if (VerticalPass && p.Group == Group.VerticalPassable)
-					return new { bounds = Vector2.Zero, select = false, obj = MainGuiObject.EmptyVessel };
+					return false;
 				var bounds = MainGuiObject.GetIntersectionDepth(nextBounds, p.Bounds);
 				float platHeight = p.Size.Y;
 				//return bounds != Vector2.Zero && bounds.Y <= 0 && bounds.Y >= -platHeight;
@@ -58,7 +58,7 @@ namespace SimonsGame.GuiObjects
 
 			if (verticallyHitPlatformTuple != null)
 			{
-				MainGuiObject verticallyHitPlatform = verticallyHitPlatformTuple.Item2;
+				MainGuiObject verticallyHitPlatform = verticallyHitPlatforms.FirstOrDefault();
 				float platHeight = verticallyHitPlatform.Size.Y;
 				float bumpLeeway = Position.Y + Size.Y - platHeight;
 				Vector2 bounds = GetIntersectionDepth(verticallyHitPlatform);
